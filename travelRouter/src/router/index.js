@@ -1,11 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import BrazilView from '@/views/BrazilView.vue'
-import PanamaView from '@/views/PanamaView.vue'
-import HawaiiView from '@/views/HawaiiView.vue'
-import JamaicaView from '@/views/JamaicaView.vue'
-import DashboardView from '@/views/DashboardView.vue'
-import ItbView from '@/views/ItbView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,35 +10,20 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: '/brazil',
-      name: 'brazil',
-      component: BrazilView,
-    },
-    {
-      path: '/panama',
-      name: 'panama',
-      component: PanamaView,
-    },
-    {
-      path: '/hawaii',
-      name: 'hawaii',
-      component: HawaiiView,
-    },
-    {
-      path: '/jamaica',
-      name: 'jamaica',
-      component: JamaicaView,
+      path: '/destinationDetail/:slug',
+      name: 'destinationDetail',
+      component: () => import('@/views/DestinationsView.vue'),
     },
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: DashboardView,
+      component: () => import('@/views/DashboardView.vue'),
     },
     {
       path: '/itb',
       name: 'itb',
-      component: ItbView,
-    }
+      component: () => import('@/views/ItbView.vue'),
+    },
   ],
 })
 
