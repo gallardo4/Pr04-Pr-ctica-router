@@ -10,6 +10,7 @@ onMounted(async () => {
 });
 </script>
 
+
 <template>
   <div>
     <div v-for="destination in destinations" :key="destination.id">
