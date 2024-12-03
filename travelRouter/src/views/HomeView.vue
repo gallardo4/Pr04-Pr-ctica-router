@@ -8,7 +8,7 @@ const destinations = jsonData.destinations;
 <template>
   <div class="home">
     <h1>All destinations</h1>
-    <div class="destinations" v-for="destination in destinations" :key="destination.id">
+    <div v-for="destination in destinations" :key="destination.id">
       <h3><RouterLink :to="`/destinationDetail/${destination.slug}`">{{ destination.name }}</RouterLink></h3>
       <img :src="`/images/${destination.image}`" :alt="destination.name" />
     </div>

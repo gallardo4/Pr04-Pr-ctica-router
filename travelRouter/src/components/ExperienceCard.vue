@@ -12,7 +12,7 @@ defineProps({
 </script>
 
 <template>
-  <div>
+  <div class="experiences">
     <h3>Top experiences in {{ destinationName }}</h3>
     <div v-for="experience in experiences" :key="experience.slug"> 
       <img :src="`/images/${experience.image}`" :alt="experience.name" />
