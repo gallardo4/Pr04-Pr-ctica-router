@@ -11,17 +11,7 @@ const router = createRouter({
     {
       path: '/destinationDetail/:slug',
       name: 'destinationDetail',
-      component: () => import('@/views/DestinationsView.vue'),
-    },
-    {
-      path: '/dashboard',
-      name: 'dashboard',
-      component: () => import('@/views/DashboardView.vue'),
-    },
-    {
-      path: '/itb',
-      name: 'itb',
-      component: () => import('@/views/ItbView.vue'),
+      component: () => import('@/views/DestinationView.vue'),
     },
   ],
 })
