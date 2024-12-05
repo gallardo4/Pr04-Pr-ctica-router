@@ -6,11 +6,20 @@ const destinations = jsonData.destinations;
 </script>
 
 <template>
+  <h1>All destinations</h1>
   <div class="home">
-    <h1>All destinations</h1>
-    <div v-for="destination in destinations" :key="destination.id">
-      <h3><RouterLink :to="`/destinationDetail/${destination.slug}`">{{ destination.name }}</RouterLink></h3>
-      <img :src="`/images/${destination.image}`" :alt="destination.name" />
+    <div class="destinationCard">
+      <div v-for="destination in destinations" :key="destination.id">
+        <h3><RouterLink :to="`/destinationDetail/${destination.slug}`">{{ destination.name }}</RouterLink></h3>
+        <RouterLink :to="`/destinationDetail/${destination.slug}`"><img :src="`/images/${destination.image}`" :alt="destination.name" /></RouterLink>
+      </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+.destinationCard {
+  display: flex;
+  gap: 1rem;
+}
+</style>
