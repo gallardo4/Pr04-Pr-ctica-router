@@ -10,8 +10,8 @@ const destinations = jsonData.destinations;
   <div class="home">
     <div class="destinationCard">
       <div v-for="destination in destinations" :key="destination.id">
-        <h3><RouterLink :to="`/destinationDetail/${destination.slug}`">{{ destination.name }}</RouterLink></h3>
-        <RouterLink :to="`/destinationDetail/${destination.slug}`"><img :src="`/images/${destination.image}`" :alt="destination.name" /></RouterLink>
+        <h3><RouterLink :to="`/destination/${destination.slug}`">{{ destination.name }}</RouterLink></h3>
+        <RouterLink :to="`/destination/${destination.slug}`"><img :src="`/images/${destination.image}`" :alt="destination.name" /></RouterLink>
       </div>
     </div>
   </div>
