@@ -1,7 +1,7 @@
 <script setup>
-import { ref, onMounted, watch } from 'vue';
+import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import ExperienceCard from '@/components/ExperienceCard.vue';
+import { RouterLink } from 'vue-router';
 import jsonData from '../../public/data.json';
 import GoBack from '@/components/GoBack.vue';
 
@@ -13,7 +13,7 @@ const loadDestination = () => {
   destination.value = jsonData.destinations.find(dest => dest.slug === slug);
 };
 
-onMounted(loadDestination);
+loadDestination();
 
 watch(
   () => route.params.slug,
@@ -28,17 +28,28 @@ watch(
 
 <template>
   <GoBack />
-  <div v-if="destination">
-    <h1>{{ destination.name }}</h1>
-    <img :src="`/images/${destination.image}`" :alt="destination.name" />
-    <p>{{ destination.description }}</p>
 
-    <ExperienceCard
-      :experiences="destination.experiences" 
-      :destinationName="destination.name"
-    />
-  </div>
-  <div v-else>
-    <p>Destination not found</p>
+  <div v-if="destination">
+    <div class="destination-details">
+      <div>
+        <h1>{{ destination.name }}</h1>
+        <img :src="`/images/${destination.image}`" :alt="destination.name" />
+      </div>
+      <p>{{ destination.description }}</p>
+    </div>
+
+    <div class="experiences">
+      <h2>Top experiences in {{ destination.name }}</h2>
+      <div class="cards">
+        <div class="card" v-for="experience in destination.experiences" :key="experience.slug">
+          <RouterLink :to="`/destination/${destination.slug}/${experience.slug}`">
+            <img :src="`/images/${experience.image}`"/>
+            <div class="card__text">{{ experience.name }}</div>
+          </RouterLink>
+        </div>
+      </div>
+    </div>
+
+    <RouterView />
   </div>
 </template>

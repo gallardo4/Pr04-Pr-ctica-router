@@ -12,6 +12,13 @@ const router = createRouter({
       path: '/destination/:slug',
       name: 'destination',
       component: () => import('@/views/DestinationView.vue'),
+      children: [
+        {
+          path: ':experienceSlug',
+          name: 'Experience',
+          component: () => import('@/views/ExperienceView.vue')
+        }
+      ]
     },
   ],
 })

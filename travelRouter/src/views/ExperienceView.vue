@@ -6,7 +6,7 @@ import { useRoute } from 'vue-router';
 const route = useRoute()
 
 const destination = dataJson.destinations.find(
-  (dest) => dest.id === parseInt(route.params.id)
+  (dest) => dest.slug === route.params.slug
 )
 
 const experience = computed(() => {
@@ -15,9 +15,8 @@ const experience = computed(() => {
 </script>
 
 <template>
-  <div class="experience-show">
-    <h1>{{ experience.name }}</h1>
-    <img :src="`/images/${experience.value.image}`" :alt="experience.name" />
+  <div class="experience-show"><h1>{{ experience.name }}</h1>
+    <img :src="`/images/${experience.image}`" :alt="experience.name" />
     <p>{{ experience.description }}</p>
   </div>
 </template>
